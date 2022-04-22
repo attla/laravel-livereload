@@ -16,11 +16,11 @@ class InjectScriptsMiddleware
         $response = $next($request);
 
         if (
-            Cache::get('serve_websockets_running') === true
-            && $request->getMethod() === Request::METHOD_GET
-            && Str::startsWith($response->headers->get('Content-Type'), 'text/html')
-            && !$request->isXmlHttpRequest()
-            && !$response instanceof JsonResponse
+            // Cache::get('serve_websockets_running') === true &&
+            $request->getMethod() === Request::METHOD_GET &&
+            Str::startsWith($response->headers->get('Content-Type'), 'text/html') &&
+            !$request->isXmlHttpRequest() &&
+            !$response instanceof JsonResponse
         ) {
             $response->setContent(
                 (new Injector())->injectScripts($response->getContent())
