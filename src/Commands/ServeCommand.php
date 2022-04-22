@@ -19,7 +19,9 @@ class ServeCommand extends Command
     public function handle()
     {
         $phpBinaryPath = (new PhpExecutableFinder())->find(false);
-        $artisanPath = base_path('artisan');
+        if (!is_file($artisanPath = base_path('attla'))) {
+            $artisanPath = base_path('artisan');
+        }
 
         $processes = [
             $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http'] + $this->serveOptions()),

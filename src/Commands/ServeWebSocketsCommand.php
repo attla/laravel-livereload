@@ -95,9 +95,14 @@ class ServeWebSocketsCommand extends Command
 
     protected function dirs()
     {
+        $isLaravel = !is_file(base_path('attla'));
+        $dirs = config('livereload.dirs');
+
         return array_map(function ($dir) {
             return base_path('/' . $dir);
-        }, config('livereload.dirs'));
+        }, $isLaravel ? $dirs : array_filter($dirs, function ($dir) {
+            return strpos($dir, 'public') === false && strpos($dir, 'config') === false;
+        }));
     }
 
     public static function port()

@@ -5,9 +5,9 @@ namespace Attla\LiveReload;
 use Illuminate\Support\Facades\Cache;
 use React\EventLoop\LoopInterface;
 use Symfony\Component\Finder\Finder;
-use Yosymfony\ResourceWatcher\Crc32ContentHash;
-use Yosymfony\ResourceWatcher\ResourceCacheMemory;
-use Yosymfony\ResourceWatcher\ResourceWatcher;
+use Attla\ResourceWatcher\Crc32ContentHash;
+use Attla\ResourceWatcher\ResourceCacheMemory;
+use Attla\ResourceWatcher\ResourceWatcher;
 
 class Watcher
 {
