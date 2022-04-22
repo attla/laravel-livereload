@@ -2,7 +2,7 @@
 
 namespace Attla\LiveReload\Commands;
 
-use Illuminate\Foundation\Console\ServeCommand;
+use Attla\Console\Commands\ServeCommand;
 
 class ServeHttpCommand extends ServeCommand
 {
