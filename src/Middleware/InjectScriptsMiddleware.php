@@ -2,23 +2,22 @@
 
 namespace Attla\LiveReload\Middleware;
 
-use Attla\LiveReload\Injector;
-use Closure;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Attla\LiveReload\Injector;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cache;
 
 class InjectScriptsMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
         $response = $next($request);
 
         if (
             // Cache::get('serve_websockets_running') === true &&
             $request->getMethod() === Request::METHOD_GET &&
-            Str::startsWith($response->headers->get('Content-Type'), 'text/html') &&
+            Str::startsWith($response->headers->get('Content-Type', ''), 'text/html') &&
             !$request->isXmlHttpRequest() &&
             !$response instanceof JsonResponse
         ) {
