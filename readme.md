@@ -29,7 +29,7 @@ By default, this package looking for files changes in these directories:
 If you want to customize the watched forlders, you can publish the configuration file by this commmand:
 
 ```bash
-php artisan vendor:publish --provider="Attla\LiveReload\CommandServiceProvider"
+php artisan vendor:publish --tag=attla/livereload/config
 ```
 
 and then you can config what you want in the `config/livereload.php`.
