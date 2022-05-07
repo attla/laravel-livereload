@@ -60,7 +60,6 @@ class ServeWebSocketsCommand extends Command
         });
 
         $this->startWatcher();
-
         $this->startServer();
     }
 
@@ -107,6 +106,6 @@ class ServeWebSocketsCommand extends Command
 
     public static function port()
     {
-        return self::$port + self::$offset;
+        return config('livereload.port') + self::$offset;
     }
 }
