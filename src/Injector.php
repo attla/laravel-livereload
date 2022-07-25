@@ -16,11 +16,9 @@ class Injector
      */
     public function injectScripts($content)
     {
-        $content = $content . view('livereload::script', [
+        return $content . view('livereload::script', [
             'host' => '127.0.0.1',
             'port' => ServeWebSocketsCommand::port(),
-        ])->getContent();
-
-        return $content;
+        ]);
     }
 }
